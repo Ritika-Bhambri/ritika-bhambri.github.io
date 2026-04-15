@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ritika Bhambri Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f0f4ff;
+    --surface: #ffffff;
+    --surface2: #f7f9ff;
+    --border: #dde3f5;
+    --accent: #5b7cf6;
+    --accent2: #38c9a8;
+    --accent3: #f4845f;
+    --text: #1a1e35;
+    --muted: #6b7299;
+    --phase1: #5b7cf6;
+    --phase2: #38c9a8;
+    --phase2a: #f4845f;
+    --radius: 14px;
+    --radius-sm: 8px;
+  }
+ 
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.65;
+  }
+ 
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(91,124,246,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(91,124,246,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+ 
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+ 
+  .hero {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2.5rem 2.5rem 2rem;
+    margin-bottom: 2.5rem;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    color: var(--text);
+    line-height: 1.15;
+  }
+  .matrix-pill {
+    display: inline-block;
+    background: #eef1ff;
+    color: var(--accent);
+    font-size: 12px;
+    font-family: monospace;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-top: 10px;
+    border: 1px solid #d5dbff;
+  }
+  .hero-desc {
+    margin-top: 14px;
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 560px;
+  }
+ 
+  .phase-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 2.5rem 0 1rem;
+  }
+  .phase-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .phase-heading h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: var(--text);
+  }
+  .phase-intro {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    padding-left: 22px;
+    line-height: 1.5;
+  }
+ 
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.2rem;
+  }
+ 
+  .card-title {
+    font-size: 15.5px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .card-body {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+ 
+  .sub-label {
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    margin: 16px 0 8px;
+  }
+ 
+  .finding-list { margin-bottom: 12px; }
+  .finding {
+    display: flex;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .fdot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    margin-top: 8px;
+    flex-shrink: 0;
+  }
+  .finding-text { font-size: 13px; color: var(--muted); }
+ 
+  code {
+    background: #f1f3f9;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.9em;
+    color: #4b5ab0;
+  }
+
+  .btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.15s;
+    border: 1.5px solid transparent;
+  }
+  .btn-filled { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .btn-outline { background: transparent; color: var(--accent); border: 1.5px solid #c5d0ff; }
+  .btn-teal { background: var(--accent2); color: #fff; border-color: var(--accent2); }
+  .btn-teal-o { background: transparent; color: #2aaa8f; border-color: #b2ece0; }
+  .btn-coral { background: var(--accent3); color: #fff; border-color: var(--accent3); }
+ 
+  .dot-p1 { background: var(--phase1); }
+  .dot-p2 { background: var(--phase2); }
+  .dot-p2a { background: var(--phase2a); }
+
+  .wiki-note {
+    margin-top: 12px;
+    background: #f7f9ff;
+    border: 1px solid #dde3f5;
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+ 
+  .footer {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 12px;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+ 
+  <div class="hero">
+    <div class="hero-eyebrow">Outreachy 2026 · Fedora Project</div>
+    <h1>Ritika Bhambri</h1>
+    <div class="matrix-pill">@ritika-bhambri:matrix.org</div>
+    <p class="hero-desc">Applicant contributing to the Fedora Project- Develop a SLM/LLM using RamaLama, Ramalama RAG based off Fedora RPM Packaging Guidelines</p>
+  </div>
+
+  <div class="phase-heading">
+    <div class="phase-dot dot-p1"></div>
+    <h2>Phase 1 — Pre-requisites</h2>
+  </div>
+ 
+  <div class="card">
+    <div class="card-title">1. FAS Fedora account</div>
+    <div class="card-body">Created and configured a Fedora Account System (FAS) account, enabling participation in the Fedora community infrastructure.</div>
+    <div class="btn-row">
+      <a href="https://forge.fedoraproject.org/commops/interns/issues/116#issuecomment-592034" target="_blank" class="btn btn-outline">View Link</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">2. Set up a personal blog</div>
+    <div class="btn-row">
+      <a href="https://dev.to/ritika-bhambri" target="_blank" class="btn btn-filled">View Blog</a>
+      <a href="https://forge.fedoraproject.org/commops/interns/issues/117#issuecomment-592035" target="_blank" class="btn btn-outline">View Comment</a>
+    </div>
+  </div>
+ 
+  <div class="card">
+    <div class="card-title">3. Write a blog that introduces fedora community to your audience</div>
+    <div class="card-body">Published a blog post introducing the Fedora community, covering its mission, structure, and contribution pathways for new readers.</div>
+    <div class="btn-row">
+      <a href="https://dev.to/ritika-bhambri/from-windows-to-fedora-a-beginners-guide-to-the-open-source-world-3lc6" target="_blank" class="btn btn-filled">View Blog</a>
+      <a href="https://forge.fedoraproject.org/commops/interns/issues/118#issuecomment-592119" target="_blank" class="btn btn-outline">View Comment</a>
+    </div>
+  </div>
+ 
+  <div class="card">
+    <div class="card-title">4. Promote your blog post on social media</div>
+    <div class="btn-row">
+      <a href="https://mastodon.social/@ritikabhambri/116289181466512650" target="_blank" class="btn btn-filled">View Post</a>
+      <a href="https://forge.fedoraproject.org/commops/interns/issues/119#issuecomment-592129" target="_blank" class="btn btn-outline">View Comment</a>
+    </div>
+  </div>
+ 
+  <div class="card">
+    <div class="card-title">5. Write an onboarding guide for Outreachy applicants</div>
+    <div class="btn-row">
+      <a href="https://dev.to/ritika-bhambri/a-practical-guide-to-getting-started-with-outreachy-from-application-to-contributions-2kae" target="_blank" class="btn btn-filled">View Blog</a>
+      <a href="https://forge.fedoraproject.org/commops/interns/issues/120#issuecomment-615439" target="_blank" class="btn btn-outline">View Comment</a>
+    </div>
+  </div>
+ 
+  <div class="wiki-note">
+    <strong style="color:var(--text);">Wikipedia contribution —</strong> While writing the Fedora introduction blog, found incorrect information about Fedora's FUDCon. Made an edit to correct it. The article now reflects up to date information.
+    <div style="margin-top:8px; display: flex; gap: 8px; flex-wrap: wrap;">
+      <a href="https://en.wikipedia.org/wiki/Special:Contributions/Ritika-Bhambri11" target="_blank" class="btn btn-outline" style="font-size:12px; padding:5px 12px;">View Edit</a>
+    </div>
+  </div>
+
+  <div class="phase-heading">
+    <div class="phase-dot dot-p2"></div>
+    <h2>Phase 2 — RamaLama</h2>
+  </div>
+ 
+  <div class="card">
+    <div class="card-title">1. Assigned Issue #122 Docling: explore document processing basics</div>
+    <div class="card-body">In this experiment I have explored the Docling CLI and used it to parse a PDF and export it to multiple formats. Compared and analyzed which format could best be used for the internship task. Tried various flags to become familiar with the basic commands and functionality of Docling, which is part of the RAG support in Ramalama.</div>
+    <div class="btn-row">
+      <a href="https://github.com/Ritika-Bhambri/docling-exploration" target="_blank" class="btn btn-teal">View Github</a>
+      <a href="https://github.com/Ritika-Bhambri/docling-exploration/blob/main/README.md" target="_blank" class="btn btn-teal-o">View ReadMe</a>
+      <a href="https://dev.to/ritika-bhambri/a-deep-dive-into-docling-35d3" target="_blank" class="btn btn-teal-o">View Blog</a>
+    </div>
+  </div>
+ 
+  <div class="phase-heading">
+    <div class="phase-dot dot-p2a"></div>
+    <h2>Phase 2A — RamaLama Docs</h2>
+  </div>
+  <p class="phase-intro">Although I was not directly assigned any issue for this phase I collaborated with fellow contributors to assist with PR review and helped in making the style guidelines for Ramalama docs.</p>
+ 
+  <div class="card">
+    <div class="card-title">1. PR Review — RamaLama #2605</div>
+    <div class="card-body">
+      PR Review — Helped a fellow contributor to verify that the layout changes and configuration documentation updates in PR #2605 adhere to formatting standards and do not trigger regressions in the automated documentation test suite. Link — <a href="https://github.com/containers/ramalama/pull/2605" target="_blank" style="color:var(--accent); text-decoration:none;">#2605</a>
+    </div>
+ 
+    <div class="sub-label">METHODOLOGY</div>
+    <div class="finding-list">
+      <div class="finding">
+        <div class="fdot" style="background:var(--accent);"></div>
+        <div class="finding-text">Static code analysis — manual review of changes in <code>docs/ramalama.1.md</code> against project documentation guidelines.</div>
+      </div>
+      <div class="finding">
+        <div class="fdot" style="background:var(--accent);"></div>
+        <div class="finding-text">Codebase contextualization — structural audit of the testing framework to understand how documentation is validated during CI/CD.</div>
+      </div>
+      <div class="finding">
+        <div class="fdot" style="background:var(--accent);"></div>
+        <div class="finding-text">Logic auditing — cross-referenced documentation changes against the config parser logic in <code>test/unit/test_config_documentation.py</code>.</div>
+      </div>
+    </div>
+ 
+    <div class="sub-label">KEY FINDINGS</div>
+    <div class="finding-list">
+      <div class="finding">
+        <div class="fdot" style="background:var(--accent2);"></div>
+        <div class="finding-text">Confirmed <code>**api_key**</code> within <code>[ramalama.provider]</code> passes current CI — it's a top-level config member so the test's set-subtraction logic doesn't flag it.</div>
+      </div>
+      <div class="finding">
+        <div class="fdot" style="background:var(--accent3);"></div>
+        <div class="finding-text">Structural inconsistency: the <code>.conf</code> parser correctly excludes <code>benchmarks</code>, but the manpage parser does not exclude <code>benchmarks</code> or <code>provider</code>.</div>
+      </div>
+      <div class="finding">
+        <div class="fdot" style="background:#e5a840;"></div>
+        <div class="finding-text">Risk: test suite vulnerable to false failures if a future contributor adds a provider-specific field (like <code>model</code> or <code>base_url</code>) using bold markdown.</div>
+      </div>
+    </div>
+ 
+    <div class="sub-label">PROPOSED SOLUTIONS</div>
+    <div class="finding-list">
+      <div class="finding">
+        <div class="fdot" style="background:var(--text);"></div>
+        <div class="finding-text"><strong>Option A:</strong> Use backticks for nested fields to bypass the current regex parser.</div>
+      </div>
+      <div class="finding">
+        <div class="fdot" style="background:var(--text);"></div>
+        <div class="finding-text"><strong>Option B:</strong> Update the Python test suite to align the exclusion logic (<code>subsections_with_fields</code>) in both parser functions.</div>
+      </div>
+    </div>
+ 
+    <div class="btn-row">
+      <a href="https://github.com/containers/ramalama/pull/2605#pullrequestreview-4108334923" target="_blank" class="btn btn-coral"> View PR Review</a>
+    </div>
+  </div>
+ 
+  <div class="card">
+    <div class="card-title">2. RamaLama Style Guide — Documentation Improvement</div>
+    <div class="card-body">
+      Collaborated with fellow conributors to improve documentation correctness and usability in the RamaLama Style Guide by:
+    </div>
+    <div class="finding-list" style="margin-top:10px;">
+      <div class="finding">
+        <div class="fdot" style="background:var(--accent2);"></div>
+        <div class="finding-text">Fixed invalid Docusaurus admonition syntax to prevent rendering issues and copy-paste errors across docs</div>
+      </div>
+      <div class="finding">
+        <div class="fdot" style="background:var(--accent2);"></div>
+        <div class="finding-text">Proposed a standardized error-message documentation format which goes well with the proposed "Usability and User Experience Guidelines" to improve clarity, reduce user confusion, and speed up troubleshooting.</div>
+      </div>
+    </div>
+    <div class="btn-row">
+      <a href="https://hackmd.io/OqpUQzmVQcCI2ZzYy2vzNQ" target="_blank" class="btn btn-coral">View HackMD Doc</a>
+    </div>
+  </div>
+ 
+  <div class="footer">Built for Outreachy 2026 Fedora Project contribution portfolio</div>
+ 
+</div>
+</body>
+</html>
